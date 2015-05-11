@@ -3,7 +3,7 @@ import re
 
 
 def is_valid_ip4(ip):
-    pattern = re.compile(r'((^|\.)(0|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])){4}$')
+    pattern = re.compile(r'((^|\.)([0-9]|[1-9][0-9]|1[0-9][0-9]|2[0-4][0-9]|25[0-5])){4}$')
     return pattern.match(ip)
 
 
@@ -29,6 +29,11 @@ class IpAddressValidationTestCase(unittest.TestCase):
         self.assertTrue(is_valid_ip4('121.18.19.20'))
         self.assertTrue(is_valid_ip4('255.255.255.255'))
         self.assertTrue(is_valid_ip4('0.0.0.0'))
+        self.assertTrue(is_valid_ip4('22.2.113.61'))
+        self.assertTrue(is_valid_ip4('22.2.113.162'))
+        self.assertTrue(is_valid_ip4('255.2.111.63'))
+        self.assertTrue(is_valid_ip4('253.2.111.69'))
+
         self.assertFalse(is_valid_ip4('00.0.0.0'))
         self.assertFalse(is_valid_ip4('256.0.0.0'))
         self.assertFalse(is_valid_ip4('255 0.0.0'))
@@ -45,3 +50,4 @@ class IpAddressValidationTestCase(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+    # solve()
